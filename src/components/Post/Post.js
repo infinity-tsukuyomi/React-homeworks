@@ -1,15 +1,12 @@
-import React, {useEffect, useState} from 'react';
-import {Link, useParams} from "react-router-dom";
-
-import css from "./Post.module.css"
-import {postService} from "../../services/post.service";
+import React from 'react';
+import {Link} from "react-router-dom";
 
 const Post = ({post}) => {
     const {id, title} = post || {};
 
     return (
-        <div className={css.wrap}>
-            <Link to={`/posts/${id}`}>Title: {title}</Link>
+        <div>
+            <Link to={`/posts/${id}`}>{title}</Link>
         </div>
     );
 };

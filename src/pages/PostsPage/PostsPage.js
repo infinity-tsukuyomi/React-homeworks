@@ -6,6 +6,17 @@ import {postService} from "../../services/post.service";
 
 const PostsPage = () => {
     const [posts, setPosts] = useState([])
+    // const [user, setUser] = useState(null);
+    // const [postUserId, setPostUserId] = useState(null);
+    //
+    // const getUser = (user) => {
+    //     setUser(user)
+    //     setPostUserId(null)
+    // }
+    //
+    // const getUserId = (id) => {
+    //     setPostUserId(id)
+    // }
 
     useEffect(() => {
         postService.getAll().then(value => setPosts([...value]))
