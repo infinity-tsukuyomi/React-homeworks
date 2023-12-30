@@ -1,13 +1,15 @@
-import React from 'react';
-import {Link} from "react-router-dom";
+import React, {useEffect, useState} from 'react';
+import {Link, useParams} from "react-router-dom";
+
+import css from "./Post.module.css"
+import {postService} from "../../services/post.service";
 
 const Post = ({post}) => {
-    const {id, title} = post;
+    const {id, title} = post || {};
 
     return (
-        <div>
-{/* В данном случае нам будет выводить строку ссылки, поэтому айди надо сделать стрингой */}
-            <Link to={id.toString()} state={post}>{title}</Link>
+        <div className={css.wrap}>
+            <Link to={`/posts/${id}`}>Title: {title}</Link>
         </div>
     );
 };

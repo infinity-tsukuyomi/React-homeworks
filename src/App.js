@@ -1,44 +1,53 @@
-import React from 'react';
-import {Routes, Route, Link, Navigate} from 'react-router-dom';
+import React, {useState} from 'react';
 
-import css from './App.module.css';
-import HomePage from "./pages/HomePage/HomePage";
+import Users from "./components/Users/Users";
+import UserDetails from "./components/UserDetails/UserDetails";
+import Posts from "./components/Posts/Posts";
+import css from './App.module.css'
+import {Navigate, Route, Routes} from "react-router-dom";
+import Layout from "./components/Layout/Layout";
 import UsersPage from "./pages/UsersPage/UsersPage";
 import PostsPage from "./pages/PostsPage/PostsPage";
-import AboutPage from "./pages/AboutPage/AboutPage";
-import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
-import Layout from "./components/Layout/Layout";
-import SinglePostPage from "./pages/SinglePostPage/SinglePostPage";
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RequireAuth from "./hoc/RequireAuth";
-import AuthProvider from "./hoc/AuthProvider";
+import Post from "./components/Post/Post";
+import User from "./components/User/User";
+import PostDetails from "./components/PostDetails/PostDetails";
 
 function App() {
+    const [user, setUser] = useState(null);
+    const [postUserId, setPostUserId] = useState(null);
+
+    const getUser = (user) => {
+      setUser(user)
+        setPostUserId(null)
+    }
+
+    const getUserId = (id) => {
+        setPostUserId(id)
+    }
 
   return (
-    <AuthProvider>
-      <Routes>
-          <Route path={'/'} element={<Layout/>}>
-{/* Когда хотим сделать какую-то страницу главной, то можно дать ей параметр - index */}
-            <Route index element={<HomePage/>}/>
-{/* При роуте на юзерс, отрисуй RequireAuth и в середину него children (UserPage) */}
-              <Route path={'users'} element={
-                  <RequireAuth>
-                      <UsersPage/>
-                  </RequireAuth>
-              }/>
-            <Route path={'posts'} element={<PostsPage/>}>
-{/* Динамичная страница, любое, что введем после слеш постс - кинет на эту стр(id - рандомное название) */}
-                <Route path={':id'} element={<SinglePostPage/>}/>
+    <div>
+        <Routes>
+            <Route path={'/'} element={<Layout/>}>
+
+                <Route index element={<Navigate to={'users'}/>}/>
+
+                <Route path={'users'} element={<UsersPage/>}>
+                    <Route path={'users/:id'} element={<User/>}/>
+                </Route>
+
+                <Route path={'posts'} element={<PostsPage/>}>
+                    <Route path={':id'} element={<PostDetails/>}/>
+                </Route>
+
             </Route>
-            <Route path={'about'} element={<AboutPage/>}/>
-{/* Допустим создали новую компоненту, не хотим прописывать ее, для этого есть Navigate */}
-            <Route path={'about-us'} element={<Navigate to={'/about'}/>}/>
-            <Route path={'login'} element={<LoginPage/>}/>
-            <Route path={'*'} element={<NotFoundPage/>}/>
-          </Route>
-      </Routes>
-    </AuthProvider>
+        </Routes>
+       {/*<div className={css.wrap}>*/}
+       {/*    <Users getUser={getUser}/>*/}
+       {/*    {user && <UserDetails user={user} getUserId={getUserId}/>}*/}
+       {/*</div>*/}
+       {/* {postUserId && <Posts userId={postUserId}/>}*/}
+    </div>
   );
 }
 
