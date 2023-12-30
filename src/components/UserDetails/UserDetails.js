@@ -2,7 +2,7 @@ import React from 'react';
 
 import css from "./UserDetails.module.css"
 
-const UsersDetails = ({user, getUserId}) => {
+const UserDetails = ({user, getUserId}) => {
 
     const {id, name, username, email} = user;
 
@@ -17,4 +17,4 @@ const UsersDetails = ({user, getUserId}) => {
     );
 };
 
-export default UsersDetails;
+export default UserDetails;

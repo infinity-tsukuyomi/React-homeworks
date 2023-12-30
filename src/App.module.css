@@ -1,4 +1,22 @@
-.wrap {
+.header {
+    min-height: 70px;
+    background-color: purple;
     display: flex;
-    padding-left: 40px;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.header a {
+    font-size: 30px;
+    color: white;
+    text-decoration: none;
+}
+
+.outlet {
+    width: 95%;
+    margin: 0 auto;
+    height: calc(100vh - 90px);
+    overflow: hidden;
+    overflow-y: auto;
 }
