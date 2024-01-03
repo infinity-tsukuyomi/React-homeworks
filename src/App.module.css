@@ -14,9 +14,27 @@
 }
 
 .outlet {
+    display: flex;
     width: 95%;
     margin: 0 auto;
     height: calc(100vh - 90px);
     overflow: hidden;
     overflow-y: auto;
 }
+
+.users {
+    display: flex;
+}
+
+.usersList {
+    margin-right: 50px;
+}
+
+.posts {
+    display: flex;
+}
+
+.postsList {
+    margin-right: 50px;
+}
+

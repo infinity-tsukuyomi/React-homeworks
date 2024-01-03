@@ -1,18 +1,14 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {Link} from "react-router-dom";
 
-import css from './User.module.css'
-import {Link, useParams} from "react-router-dom";
+import css from '../../App.module.css'
 
-const User = ({user, getUser}) => {
+const User = ({user}) => {
     const {id, name} = user;
 
-    let params = useParams();
-
-
     return (
-        <div className={css.wrap}>
-            <Link to={id}>{id} {name}</Link>
-            {/*<button onClick={() => getUser(user)}>Details</button>*/}
+        <div className={css.usersList}>
+            <Link to={`/users/${id}`}>{id} {name}</Link>
         </div>
     );
 };
