@@ -1,14 +1,15 @@
 import React, {useEffect, useState} from 'react';
 import {Link, Outlet, useParams} from "react-router-dom";
+
 import {postService} from "../../services/post.service";
 
 const PostDetails = () => {
     const {id} = useParams();
 
-    const [post, setPost] = useState(null)
+    const [post, setPost] = useState(null);
 
     useEffect(() => {
-        postService.getByUserId(id).then(value => setPost({...value}))
+        postService.getById(id).then(value => setPost({...value}))
     }, [id]);
 
     return (

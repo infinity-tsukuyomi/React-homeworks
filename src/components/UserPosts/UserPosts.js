@@ -1,15 +1,16 @@
 import React, {useEffect, useState} from 'react';
 import {useParams} from "react-router-dom";
-import {userPostsService} from "../../services/userPosts.service";
+
+import {postService} from "../../services/post.service";
 import UserPost from "../UserPost/UserPost";
 
 const UserPosts = () => {
     const {id} = useParams();
 
-    const [userPosts, setUserPosts] = useState(null)
+    const [userPosts, setUserPosts] = useState(null);
 
     useEffect(() => {
-        userPostsService.getById(id).then(value => setUserPosts([...value]))
+        postService.getByUserId(id).then(value => setUserPosts([...value]))
     }, []);
 
     return (

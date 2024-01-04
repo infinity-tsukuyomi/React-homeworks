@@ -1,8 +1,6 @@
 import React from 'react';
 
 const UserPost = ({userPost}) => {
-
-
     return (
         <div>
             <div>

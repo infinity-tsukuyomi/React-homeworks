@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
-
 import {Link, Outlet, useParams} from "react-router-dom";
+
 import {userService} from "../../services/user.service";
 
 const UserDetails = () => {
     const {id} = useParams();
 
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(null);
 
     useEffect(() => {
         userService.getById(id).then(value => setUser({...value}))

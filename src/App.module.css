@@ -13,8 +13,13 @@
     text-decoration: none;
 }
 
+.header a[class = 'active'] {
+    text-decoration: underline;
+    color: aqua;
+}
+
 .outlet {
-    display: flex;
+    /*display: flex;*/
     width: 95%;
     margin: 0 auto;
     height: calc(100vh - 90px);
@@ -23,18 +28,32 @@
 }
 
 .users {
-    display: flex;
+    display: grid;
+    justify-content: center;
+    grid-template-columns: 50% 50%;
 }
 
 .usersList {
     margin-right: 50px;
 }
 
+.usersList a {
+    text-decoration: none;
+    color: black;
+    font-size: 24px;
+}
+
 .posts {
-    display: flex;
+    display: grid;
+    grid-template-columns: 50% 50%;
 }
 
 .postsList {
     margin-right: 50px;
 }
 
+.postsList a {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}

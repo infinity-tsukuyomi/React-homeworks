@@ -6,20 +6,20 @@ import {postService} from "../../services/post.service";
 import css from '../../App.module.css';
 
 const PostsPage = () => {
-    const [posts, setPosts] = useState([])
+    const [posts, setPosts] = useState([]);
 
     useEffect(() => {
         postService.getAll().then(value => setPosts([...value]))
-    }, [])
+    }, []);
 
     return (
         <div>
-            <h1>Posts</h1>
             <div className={css.posts}>
                 <div>
+                    <h1>Posts</h1>
                     {posts.map(post => <Post key={post.id} post={post}/>)}
                 </div>
-            <Outlet/>
+                <Outlet/>
             </div>
         </div>
     );
